@@ -9,11 +9,11 @@
 class SLATS {
 	function sl_ats_setup_menu(){
 
-    	add_menu_page( 'Applicant Tracking', 'Applicant Tracking', 'manage_options', 'test-plugin', array('SLATS_Menu_Detail', 'menu_page'), null, 3 );
-    	
-    	add_submenu_page( 'test-plugin', 'Company Profile', 'Company Profile', 'administrator', 'sl-ats-company', array('SLATS_Menu_Detail', 'sl_ats_companies_page')  );
+		add_menu_page( 'Applicant Tracking', 'Applicant Tracking', 'manage_options', 'test-plugin', array('SLATS_Menu_Detail', 'menu_page'), null, 3 );
 
-    	register_post_type( 'recruiters', array(
+		add_submenu_page( 'test-plugin', 'Company Profile', 'Company Profile', 'administrator', 'sl-ats-company', array('SLATS_Menu_Detail', 'sl_ats_companies_page')  );
+
+		register_post_type( 'recruiters', array(
 			'label' => 'Manage Recruiters',
 			'labels'=> array( 
 				'not_found'=> 'No recruiters found.'
@@ -26,9 +26,9 @@ class SLATS {
 
 
 
-    	add_submenu_page( 'test-plugin', 'Manage Recruiters', 'Recruiters', 'administrator', "edit.php?post_type=recruiters" );
+		add_submenu_page( 'test-plugin', 'Manage Recruiters', 'Recruiters', 'administrator', "edit.php?post_type=recruiters" );
 
-    	register_post_type( 'jobs', array(
+		register_post_type( 'jobs', array(
 			'label' => 'Manage Jobs',
 			'labels'=> array( 
 				'not_found'=> 'No jobs found.'
@@ -65,6 +65,14 @@ class SLATS {
 
 	// }
 
+	/**
+	 * Edits the sortable admin columns for post type: Jobs
+	 * @since 
+	 * @param  mixed $columns - the columns from the sortable admin table for the job post type created.
+	 * @return mixed $columns
+	 * @var  [<description>]
+	 * @author  <[nazwrightthedeveloper@gmail.com]>
+	 */
 	function sl_ats_custom_edit_job_columns( $columns ){
 		return $columns;
 	}
@@ -85,27 +93,27 @@ add_filter( 'manage_recruiters_posts_columns', array('SLATS', 'sl_ats_custom_edi
 add_filter( 'manage_candidates_posts_columns', array('SLATS', 'sl_ats_custom_edit_candidate_columns') );
 // hook the setup function to add to the admin menu
 add_action('admin_menu', array('SLATS', 'sl_ats_setup_menu'));
- 
+
 
 
 
 class SLATS_Menu_Detail{
 	// be a dashboard of all the different things you can do?
 	function menu_page(){
-    ?>
+		?>
 		<div class="wrap">
 			<h2>Welcome To My Plugin</h2>
 		</div>
-	<?php
+		<?php
 
     	// add an action here for the menu being created
 	}
 
 	function sl_ats_recruiters_page(){
 		?>
-			<div class="wrap">
-				<h2>Welcome To My Plugin</h2>
-			</div>
+		<div class="wrap">
+			<h2>Welcome To My Plugin</h2>
+		</div>
 		<?php
 
 		// add an action here for the menu being created
@@ -125,14 +133,14 @@ class SLATS_Menu_Detail{
 
 	function sl_ats_companies_page(){
 		?>
-			<div class="wrap">
-				<h2>Company Profile</h2>
-				<form>
-					<input type="text" name="companyName" placeholder="Enter the name of your company">
-					<input type="text" name="companyAddress" placeholder="Enter the address of your company">
-					<input type="text" name="companyWebsite" placeholder="Enter the website URL of your company">
-				</form>
-			</div>
+		<div class="wrap">
+			<h2>Company Profile</h2>
+			<form>
+				<input type="text" name="companyName" placeholder="Enter the name of your company">
+				<input type="text" name="companyAddress" placeholder="Enter the address of your company">
+				<input type="text" name="companyWebsite" placeholder="Enter the website URL of your company">
+			</form>
+		</div>
 		<?php
 	}
 
@@ -147,7 +155,7 @@ class SLATS_Menu_Detail{
 class SLATS_Register_Posts{
 
 }
- 
+
 
 
 
